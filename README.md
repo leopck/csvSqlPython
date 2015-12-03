@@ -71,7 +71,7 @@ Therefore in this project, we will be looking into Python pandas library to conv
                 data = pd.read_sql_query('SELECT * FROM augdata', disk_engine)
                 print data
                 
-Fin. Enjoy your SQL quering.
+Fin. Enjoy your SQL querying.
 
 
 

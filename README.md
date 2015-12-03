@@ -77,6 +77,10 @@ Therefore in this project, we will be looking into Python pandas library to conv
                 data = pd.read_sql_query('SELECT * FROM data', disk_engine)
                 print data
                 
+				cs.makeFileIntoSQL('file2.csv', 'data2', disk_engine)
+                data2 = pd.read_sql_query('SELECT * FROM data2', disk_engine)
+                print data2
+                
                 
                 
 Fin. Enjoy your SQL querying.

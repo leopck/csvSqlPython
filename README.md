@@ -21,11 +21,11 @@ Therefore in this project, we will be looking into Python pandas library to conv
 ### Some details for the script
 
 
-`function`: makeFileIntoSQL(file, nameoftable)
+`function`: makeFileIntoSQL(file, nameoftable, sqlengine)
 
 `Usage`   : converts csv files into SQL files
 
-`Example` : makeFileIntoSQL('file1.csv', 'augdata') 
+`Example` : makeFileIntoSQL('file1.csv', 'augdata', disk_engine) 
 
 ``##  augdata is the name of the table in the SQL, you can rename this to whatever you like. This would affect the SQL queries.``
 
@@ -42,13 +42,22 @@ Therefore in this project, we will be looking into Python pandas library to conv
 
 ### Usage
 
-1. Create an SQL engine and import sqlalchemy
+1. Create an SQL engine and import sqlalchemy and pandas
 
 				from sqlalchemy import create_engine
+                import pandas as pd
 
 				disk_engine = create_engine('sqlite:///awesome.db')
 
-2. 
+2. import csvtosql and select the csv files that you want to convert into SQL tables and pass to the makeFileIntoSQL the disk_engine
+
+				import csvtosql as cs
+                cs.makeFileIntoSQL('file1.csv', 'data', disk_engine)
+
+3. Run your normal SQL queries as usual! Just perform each SQL queries using pandas library.
+
+				data = pd.read_sql_query('SELECT * FROM augdata', disk_engine)
+                print data ## To view the output of the query
 
 
 

@@ -1,13 +1,12 @@
 import pandas as pd
 from sqlalchemy import create_engine # database connection
-import datetime as dt
-from IPython.display import display
 
-# import plotly.plotly as py # interactive graphing
-# from plotly.graph_objs import Bar, Scatter, Marker, Layout
+############################################
+# uncomment this below if you want to see the output the of data in a table
+# from IPython.display import display
+# display(pd.read_csv('file1.csv'))
+############################################
 
-# display(pd.read_csv('Aug14.csv'))
-disk_engine = create_engine('sqlite:///awesome.db')
 
 def makeFileIntoSQL(myFile, sqlName):
     chunksize = 20000
@@ -16,30 +15,49 @@ def makeFileIntoSQL(myFile, sqlName):
     for df in pd.read_csv(myFile, chunksize=chunksize, iterator=True, encoding='utf-8'):
         df = df.rename(columns={c: c.replace(' ', '') for c in df.columns}) # Remove spaces from columns
         df.index += index_start
-        df.to_sql(sqlName, disk_engine, if_exists='replace')
+        df.to_sql(sqlName, disk_engine, if_exists='replace') ##change to if_exists='append' if you don't want to replace the database file
         index_start = df.index[-1] + 1
 
+if __name__ == "__main__":
+    ##Create sqlite engine
+    disk_engine = create_engine('sqlite:///awesome.db')
 
-makeFileIntoSQL('Aug14.csv', 'data')
-makeFileIntoSQL('July01.csv', 'julydata')
+    ##Converting files into SQL tables
+    makeFileIntoSQL('file1.csv', 'augdata')
+    makeFileIntoSQL('file2.csv', 'julydata')
 
-df = pd.read_sql_query('SELECT * FROM data LIMIT 3', disk_engine)
-print df
+    ##Examples of SQL queries
+    ##Example 1
+    df = pd.read_sql_query('SELECT * FROM augdata', disk_engine)
+    print "This is data from file1.csv"
+    print df
+    print ""
 
-df_july = pd.read_sql_query('SELECT * FROM julydata LIMIT 3', disk_engine)
-print df_july
-#
-# df = pd.read_sql_query('SELECT STATE FROM data LIMIT 50', disk_engine)
-# df.head()
-#
-# df = pd.read_sql_query('SELECT STATE, COUNT(*) as `num_complaints`'
-#                        'FROM data '
-#                        'GROUP BY SYMPTOM_ERROR_CODE', disk_engine)
-# df.head()
-#
-# df = pd.read_sql_query('SELECT STATE, COUNT(*) as `num_complaints`'
-#                        'FROM data '
-#                        'GROUP BY STATE '
-#                        'ORDER BY -num_complaints', disk_engine)
+    ##Example 2
+    df_july = pd.read_sql_query('SELECT * FROM julydata', disk_engine)
+    print "This is data from file2.csv"
+    print df_july
+    print ""
 
-# py.iplot([Bar(x=df.STATE, y=df.num_complaints)], filename='awesome1/most common complaints by state')
+    ##Example 3
+    df = pd.read_sql_query('SELECT NAME FROM augdata', disk_engine)
+    print "This is data from file1.csv"
+    print df
+    print ""
+
+    ##Example 4
+    df = pd.read_sql_query('SELECT AGE, COUNT(*) as `num_complaints`'
+                           'FROM augdata '
+                           'GROUP BY NAME', disk_engine)
+    print "This is data from file1.csv"
+    print df
+    print ""
+
+    ##Example 5
+    df = pd.read_sql_query('SELECT ID, COUNT(*) as `num_complaints`'
+                           'FROM augdata '
+                           'GROUP BY BEING '
+                           'ORDER BY -num_complaints', disk_engine)
+    print "This is data from file1.csv"
+    print df
+    print ""

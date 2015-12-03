@@ -58,8 +58,14 @@ Therefore in this project, we will be looking into Python pandas library to conv
 
 				data = pd.read_sql_query('SELECT * FROM augdata', disk_engine)
                 print data ## To view the output of the query
-                
-4. Your code should look like this now:
+
+4. If you have more than one csv files that you want to parse then just add into the makeFileIntoSQL()
+				
+                cs.makeFileIntoSQL('file2.csv', 'data2', disk_engine)
+                data2 = pd.read_sql_query('SELECT * FROM data2', disk_engine)
+                print data2
+
+5. Your code should look like this now:
 				
                 import csvtosql as cs
                 import pandas as pd
@@ -68,8 +74,13 @@ Therefore in this project, we will be looking into Python pandas library to conv
                 disk_engine = create_engine('sqlite:///awesome.db')
                 cs.makeFileIntoSQL('file1.csv', 'data', disk_engine)
                 
-                data = pd.read_sql_query('SELECT * FROM augdata', disk_engine)
+                data = pd.read_sql_query('SELECT * FROM data', disk_engine)
                 print data
+                
+                cs.makeFileIntoSQL('file2.csv', 'data2', disk_engine)
+                data2 = pd.read_sql_query('SELECT * FROM data2', disk_engine)
+                print data2                
+                
                 
 Fin. Enjoy your SQL querying.
 

@@ -25,7 +25,9 @@ Therefore in this project, we will be looking into Python pandas library to conv
 
 `Usage`   : converts csv files into SQL files
 
-`Example` : makeFileIntoSQL('file1.csv', 'augdata') ##'augdata' is the name of the table in the SQL, you can rename this to whatever you like. This would affect the SQL queries.
+`Example` : makeFileIntoSQL('file1.csv', 'augdata') 
+
+``##  augdata is the name of the table in the SQL, you can rename this to whatever you like. This would affect the SQL queries.``
 
 
 

@@ -16,15 +16,13 @@ Therefore in this project, we will be looking into Python pandas library to conv
 
 ### Understanding the script
 
-def makeFileIntoSQL(myFile, sqlName):
-    chunksize = 20000
-    j = 0
-    index_start = 1
-    for df in pd.read_csv(myFile, chunksize=chunksize, iterator=True, encoding='utf-8'):
-        df = df.rename(columns={c: c.replace(' ', '') for c in df.columns})
-        df.index += index_start
-        df.to_sql(sqlName, disk_engine, if_exists='replace')
-        index_start = df.index[-1] + 1
+`function`: makeFileIntoSQL(file, nameoftable)
+`Usage`   : converts csv files into SQL files
+`Example` : makeFileIntoSQL('file1.csv', 'augdata') ##'augdata' is the name of the table in the SQL, you can rename this to whatever you like. This would affect the SQL queries.
+
+`function`: make SQL query and save the results into a variable
+`Exa
+
 
 
 

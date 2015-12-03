@@ -58,6 +58,21 @@ Therefore in this project, we will be looking into Python pandas library to conv
 
 				data = pd.read_sql_query('SELECT * FROM augdata', disk_engine)
                 print data ## To view the output of the query
+                
+4. Your code should look like this now:
+				
+                import csvtosql as cs
+                import pandas as pd
+                from sqlalchemy import create_engine
+                
+                disk_engine = create_engine('sqlite:///awesome.db')
+                cs.makeFileIntoSQL('file1.csv', 'data', disk_engine)
+                
+                data = pd.read_sql_query('SELECT * FROM augdata', disk_engine)
+                print data
+                
+Fin.
+
 
 
 

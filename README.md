@@ -22,7 +22,9 @@ Therefore in this project, we will be looking into Python pandas library to conv
 
 
 `function`: makeFileIntoSQL(file, nameoftable)
+
 `Usage`   : converts csv files into SQL files
+
 `Example` : makeFileIntoSQL('file1.csv', 'augdata') ##'augdata' is the name of the table in the SQL, you can rename this to whatever you like. This would affect the SQL queries.
 
 
@@ -31,7 +33,9 @@ Therefore in this project, we will be looking into Python pandas library to conv
 
 
 `function`: pandas.read_sql_query('SELECT * FROM augdata', create_engine('sqlite:///name.db'))
+
 `Usage`   : make SQL query and save the results into a variable
+
 `Example` : df = pd.read_sql_query('SELECT * FROM augdata', disk_engine)
 
 

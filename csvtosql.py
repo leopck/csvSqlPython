@@ -15,7 +15,7 @@ def makeFileIntoSQL(myFile, sqlName, sqlengine):
     for df in pd.read_csv(myFile, chunksize=chunksize, iterator=True, encoding='utf-8'):
         df = df.rename(columns={c: c.replace(' ', '') for c in df.columns}) # Remove spaces from columns
         df.index += index_start
-        df.to_sql(sqlName, sqlengine, if_exists='replace') ##change to if_exists='append' if you don't want to replace the database file
+        df.to_sql(sqlName, sqlengine, if_exists='append') ##change to if_exists='replace' if you don't want to replace the database file
         index_start = df.index[-1] + 1
 
 if __name__ == "__main__":

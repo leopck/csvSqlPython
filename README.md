@@ -1,14 +1,14 @@
-# csvSqlPython
+# csvSqlPython (Really should have named it better... It just helps transforming data from CSV format to SQL format)
 
 ## Converting csv files to SQL using Python demo project
+
+### Using Pandas
 
 This is a simple project to demonstrate the use of Python Anaconda or Pandas for parsing or extracting csv files and converting it into SQL language.
 
 By converting the csv files into SQL, it provides a faster means as well as a simpler way to control the datas inside the csv files. Since SQL handles all the algorithms and difficult data arrangement and joinings of datas, SQL would be one of the few good solutions to solve data management in Python.
 
 Therefore in this project, we will be looking into Python pandas library to convert csv files into SQL to simplify the data handling.
-
-
 
 ### How to use the python script
 

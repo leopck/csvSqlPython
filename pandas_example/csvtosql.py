@@ -29,35 +29,35 @@ if __name__ == "__main__":
     ##Examples of SQL queries
     ##Example 1
     df = pd.read_sql_query('SELECT * FROM augdata', disk_engine)
-    print "This is data from file1.csv"
-    print df
-    print ""
+    print ("This is data from file1.csv")
+    print (df)
+    print ("")
 
     ##Example 2
     df_july = pd.read_sql_query('SELECT * FROM julydata', disk_engine)
-    print "This is data from file2.csv"
-    print df_july
-    print ""
+    print ("This is data from file2.csv")
+    print (df_july)
+    print ("")
 
     ##Example 3
     df = pd.read_sql_query('SELECT NAME FROM augdata', disk_engine)
-    print "This is data from file1.csv"
-    print df
-    print ""
+    print ("This is data from file1.csv")
+    print (df)
+    print ("")
 
     ##Example 4
     df = pd.read_sql_query('SELECT AGE, COUNT(*) as `num_complaints`'
                            'FROM augdata '
                            'GROUP BY NAME', disk_engine)
-    print "This is data from file1.csv"
-    print df
-    print ""
+    print ("This is data from file1.csv")
+    print (df)
+    print ("")
 
     ##Example 5
     df = pd.read_sql_query('SELECT ID, COUNT(*) as `num_complaints`'
                            'FROM augdata '
                            'GROUP BY BEING '
                            'ORDER BY -num_complaints', disk_engine)
-    print "This is data from file1.csv"
-    print df
-    print ""
+    print ("This is data from file1.csv")
+    print (df)
+    print ("")

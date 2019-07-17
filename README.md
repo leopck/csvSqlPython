@@ -10,13 +10,12 @@ By converting the csv files into SQL, it provides a faster means as well as a si
 
 Therefore in this project, we will be looking into Python pandas library to convert csv files into SQL to simplify the data handling.
 
-### How to use the python script
+### Getting Started
 
-1. Install Anaconda `(https://www.continuum.io/downloads)`
-2. git clone this project or download the zip file of this project.
-3. Run `ipython csvtosql.py`
-
-
+```
+pip install -r requirements.txt
+python example/test.py
+```
 
 ### Some details for the script
 
@@ -28,8 +27,6 @@ Therefore in this project, we will be looking into Python pandas library to conv
 `Example` : makeFileIntoSQL('file1.csv', 'augdata', disk_engine) 
 
 ``##  augdata is the name of the table in the SQL, you can rename this to whatever you like. This would affect the SQL queries.``
-
-
 
 **From pandas library**
 

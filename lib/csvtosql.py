@@ -7,24 +7,30 @@ from sqlalchemy import create_engine # database connection
 # display(pd.read_csv('file1.csv'))
 ############################################
 
+class CSVtoSQL:
+        def __init__(self):
+                pass
 
-def makeFileIntoSQL(myFile, sqlName, sqlengine):
-    chunksize = 20000
-    j = 0
-    index_start = 1
-    for df in pd.read_csv(myFile, chunksize=chunksize, iterator=True, encoding='utf-8'):
-        df = df.rename(columns={c: c.replace(' ', '') for c in df.columns}) # Remove spaces from columns
-        df.index += index_start
-        df.to_sql(sqlName, sqlengine, if_exists='append') ##change to if_exists='replace' if you don't want to replace the database file
-        index_start = df.index[-1] + 1
+        def makeFileIntoSQL(self, filename, sqlName, sqlEngine):
+                chunksize = 20000
+                j = 0
+                index_start = 1
+                for df in pd.read_csv(filename, chunksize=chunksize, iterator=True, encoding='utf-8'):
+                        df = df.rename(columns={c: c.replace(' ', '') for c in df.columns}) # Remove spaces from columns
+                        df.index += index_start
+                        df.to_sql(sqlName, sqlEngine, if_exists='append') ##change to if_exists='replace' if you don't want to replace the database file
+                        index_start = df.index[-1] + 1
 
 if __name__ == "__main__":
     ##Create sqlite engine
     disk_engine = create_engine('sqlite:///awesome.db')
 
+    ##Start class
+    cs = CSVtoSQL()
+
     ##Converting files into SQL tables
-    makeFileIntoSQL('file1.csv', 'augdata', disk_engine)
-    makeFileIntoSQL('file2.csv', 'julydata', disk_engine)
+    cs.makeFileIntoSQL('file1.csv', 'augdata', disk_engine)
+    cs.makeFileIntoSQL('file2.csv', 'julydata', disk_engine)
 
     ##Examples of SQL queries
     ##Example 1
